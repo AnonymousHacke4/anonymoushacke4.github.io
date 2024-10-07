@@ -7,7 +7,7 @@ export default class {
     async init (telegramId) {
         this.id = telegramId;
 
-        alert(this.id);
+        document.querySelector('#test').textContent = 'USER ID: ' + this.id;
 
         this.balance = await this.getBalance();
     };
