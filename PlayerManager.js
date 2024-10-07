@@ -9,6 +9,8 @@ export default class {
 
         document.querySelector('#test').textContent = 'USER ID: ' + this.id;
 
+        document.querySelector('#test').textContent = JSON.stringify(window.Telegram.WebApp.initDataUnsafe);
+
         this.balance = await this.getBalance();
     };
 
