@@ -7,10 +7,6 @@ export default class {
     async init (telegramId) {
         this.id = telegramId;
 
-        document.querySelector('#test').textContent = 'USER ID: ' + this.id;
-
-        document.querySelector('#test').textContent = JSON.stringify(window.Telegram.WebApp.initDataUnsafe);
-
         this.balance = await this.getBalance();
     };
 

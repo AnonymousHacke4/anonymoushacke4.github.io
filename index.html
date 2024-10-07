@@ -2,7 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>RUNNER GAME</title>
     <style>
         * {
@@ -150,9 +151,10 @@
             width: 75%;
         }
         #top {
+            position: relative;
             overflow-y: auto;
             overflow-x: hidden;
-            height: 500px;
+            height: 425px;
         }
         #top > div {
             display: flex;
@@ -173,10 +175,6 @@
     </style>
     <script src="./libs/matter.min.js"></script>
     <script src="./libs/pixi.min.js"></script>
-    <script src="./libs/pixi-particles.min.js"></script>
-    <script src="./libs/typed_signals.js"></script>
-    <script src="./libs/tweedle.js"></script>
-    <script src="./libs/pixi-ui.min.js"></script>
     <script src="./libs/pixi-sound.min.js"></script>
     <script src="./libs/telegram-web-app.js"></script>
     <script type="module">
@@ -188,7 +186,6 @@
 <body>
     <div id="ui">
         <div class="screen">
-            <span id="test">TEST</span>
             <span id="userBalance">...</span>
             <button id="playButton">PLAY</button>
 
@@ -206,10 +203,6 @@
         <div class="screen" style="display: none; top: 45%;">
             <span>TOP GAMES:</span>
             <div id="top"></div>
-            <div>
-                <button id="previousPage">-</button>
-                <button id="nextPage">+</button>
-            </div>
         </div>
 
         <div class="screen" style="display: none;">

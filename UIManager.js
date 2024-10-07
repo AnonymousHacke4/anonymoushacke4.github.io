@@ -1,6 +1,5 @@
 export default class {
     #_lastButtonId = 0;
-    #_lastTopLength = 0;
     #_topPage = 0;
     #_takeCount = 10;
     #_elements = {
@@ -33,8 +32,6 @@ export default class {
         document.querySelector('#replenishConfirm').addEventListener('click', ({ isTrusted }) => isTrusted && this.#_confirmReplenish());
 
         document.querySelector('#resultButton').addEventListener('click', ({ isTrusted }) => isTrusted && this.#_confirmResult());
-
-        ['previous','next'].map(type => document.querySelector(`#${type}Page`).addEventListener('click', ({ isTrusted }) => isTrusted && this.#_toggleTopPage(type)));
 
         [...document.querySelectorAll('[data-id]')].map(el => {
             const buttonId = +el.getAttribute('data-id');
@@ -86,22 +83,10 @@ export default class {
         document.querySelector('#resultForm').style.visibility = 'hidden';
     };
 
-    async #_toggleTopPage (type) {
-        const increment = type === 'next' ? 1 : -1;
-
-        if((this.#_topPage === 0 && increment === -1) || ((this.#_lastTopLength < this.#_takeCount) && increment === 1)) return;
-
-        this.#_topPage += increment;
-
-        this.#_makeTopPage(await this.#_playerData.getTopGames(this.#_takeCount, this.#_takeCount * this.#_topPage));
-    };
-
-    #_makeTopPage (topData) {
-        this.#_lastTopLength = topData.items.length;
-
+    #_makeTopPage ({ items = [] } = {}) {
         this.#_elements.topElement.innerHTML = '';
 
-        topData.items.map(({ id, betSize, multiplier, result }) => {
+        items.map(({ id, betSize, multiplier, result }) => {
             const game = document.createElement('div');
 
             game.innerHTML = `<span>id: ${id}</span>

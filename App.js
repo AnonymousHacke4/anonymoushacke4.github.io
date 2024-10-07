@@ -31,7 +31,7 @@ export default class extends PIXI.Application {
     async _init () {
         if(!window.DEBUG_MODE) document.querySelector('#game').appendChild(this.view);
 
-        await this.#_playerData.init(window.Telegram.WebApp.initDataUnsafe.user.id);
+        await this.#_playerData.init(window.Telegram.WebApp.initDataUnsafe.user?.id);
 
         this.#_gameManager = new GameManager(
             WIDTH,
