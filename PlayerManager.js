@@ -7,6 +7,8 @@ export default class {
     async init (telegramId) {
         this.id = telegramId;
 
+        alert(this.id);
+
         this.balance = await this.getBalance();
     };
 
